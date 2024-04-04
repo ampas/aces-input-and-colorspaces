@@ -4,7 +4,7 @@
 
 This repository contains Color Space Conversion Transforms for use with ACES. 
 The transforms found in this repository may have dependancies on code found in the
-[`aces-core`](https://githu.com/ampas/aces-dev) repository. In previous versions
+[`aces-core`](https://github.com/ampas/aces-dev) repository. In previous versions
 of ACES, Input Transforms used the `IDT` token in the filename and TransformID.
 In ACES 2 Input Tranforms use the `CSC` token to denote they may be used as
 either Input Transforms, or as general Color Space Conversion Transforms.
