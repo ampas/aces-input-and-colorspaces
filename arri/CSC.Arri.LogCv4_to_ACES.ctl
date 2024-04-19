@@ -9,7 +9,8 @@
 //          ACES2065-1 (AP0 w/ linear encoding)
 //
 
-import "ACESlib.Utilities_Color";
+import "Lib.Academy.Utilities";
+import "Lib.Academy.ColorSpaces";
 
 // ARRI LogC4 to ACES
 

@@ -9,7 +9,8 @@
 //          ACES2065-1 (AP0 w/ linear encoding)
 //
 
-import "ACESlib.Utilities_Color";
+import "Lib.Academy.Utilities";
+import "Lib.Academy.ColorSpaces";
 
 const float AWG_2_AP0_MAT[3][3] = 
                         calculate_rgb_to_rgb_matrix( ARRI_ALEXA_WG_PRI, 

@@ -2,7 +2,8 @@
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Apple.AppleLog_BT2020_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>AppleLog Rec2020 to ACES2065-1</ACESuserName>
 
-import "ACESlib.Utilities_Color";
+import "Lib.Academy.Utilities";
+import "Lib.Academy.ColorSpaces";
 
 // ITU-R BT.2020 -to- ACES conversion matrix
 const float REC2020_2_ACES_MAT[3][3] = calculate_rgb_to_rgb_matrix(REC2020_PRI, AP0);

@@ -12,7 +12,8 @@
 // Provided by Sony Electronics Corp.
 //
 
-import "ACESlib.Utilities_Color";
+import "Lib.Academy.Utilities";
+import "Lib.Academy.ColorSpaces";
 
 //------------------------------------------------------------
 //  VENICE S-Gamut3 to AP0 matrix coeffs
