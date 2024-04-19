@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.ACES_to_SLog3_SGamut3Cine.a2.1.0</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.ACES_to_SLog3_SGamut3Cine.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to Sony S-Log3 S-Gamut3.Cine</ACESuserName>
 
 //
