@@ -66,7 +66,6 @@ void main (
 	linear[2] = SLog3_to_linear( SLog3[2] );
 
 	float ACES[3] = mult_f3_f33( linear, SGAMUT3_2_AP0_MAT );
-	print_f33(SGAMUT3_2_AP0_MAT);
 
 	rOut = ACES[0];
 	gOut = ACES[1];
