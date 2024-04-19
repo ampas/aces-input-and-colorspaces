@@ -7,7 +7,7 @@ This repository contains Color Space Conversion Transforms for use with ACES. Th
 ### Important note to users ###
 The transforms in this repository, except those under the `contrib` directory, have been supplied by, or developed in conjunction with, the manufacturer. They are provided as part of this repository for your convenience only. You should not assume the IDTs provided are the latest developed by the manufacturer. Every effort is made to keep these IDTs up-to-date, but users should *always* contact the manufacturer directly to confirm they have the latest IDTs for their camera.
 
-The `contrib` directory contains community-supplied transforms, provided as-is and may not be optimal. The ACES team may have done minimal testing on these transforms, but please visit Feedback on [ACESCentral.com](https://community.acescentral.com) to review or leave feedback on these transforms.
+The `contrib` directory contains community-supplied transforms, provided as-is and may not be optimal. The ACES team may have done minimal testing on these transforms, but please visit [ACESCentral.com](https://community.acescentral.com) to review or leave feedback on these transforms.
 
 ### Note to ACES Implementers ###
 
