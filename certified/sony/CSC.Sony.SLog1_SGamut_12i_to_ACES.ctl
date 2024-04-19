@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2:CSC.Sony.SLog1_SGamut_12i_to_ACES.a2.v1</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.SLog1_SGamut_12i_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>Sony S-Log1 S-Gamut 12 bits to ACES2065-1</ACESuserName>
 
 //

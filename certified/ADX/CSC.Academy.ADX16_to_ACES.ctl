@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2:CSC.Academy.ADX16_to_ACES.a2.v1</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Academy.ADX16_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>ADX16 to ACES2065-1</ACESuserName>
 
 //

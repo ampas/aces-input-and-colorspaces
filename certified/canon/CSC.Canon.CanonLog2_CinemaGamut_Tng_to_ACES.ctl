@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2:CSC.Canon.CanonLog2_CinemaGamut_Tng_to_ACES.a2.v2</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Canon.CanonLog2_CinemaGamut_Tng_to_ACES.a2.v2</ACEStransformID>
 // <ACESuserName>Canon CanonLog2 CinemaGamut (Tungsten) to ACES2065-1</ACESuserName>
 
 /* ********************************************* */
