@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:ACEScsc.Academy.ACES_to_BMDFilm_WideGamut_Gen5.a2.v1</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Academy.ACES_to_BMDFilm_WideGamut_Gen5.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2605-1 to Blackmagic Film Wide Gamut (Gen 5)</ACESuserName>
 
 //
