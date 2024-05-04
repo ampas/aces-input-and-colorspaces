@@ -6,6 +6,13 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities DJI_DGAMUT_PRI = 
+{
+    { 0.71,    0.31},
+    { 0.21,    0.88},
+    { 0.09,    -0.08},
+    { 0.3127,  0.3290}
+};
 
 // AP0 to D-Gamut matrix
 const float AP0_TO_DGamut_MAT[3][3] = calculate_rgb_to_rgb_matrix( AP0,

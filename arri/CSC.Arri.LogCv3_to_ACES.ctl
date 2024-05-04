@@ -12,6 +12,14 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities ARRI_ALEXA_WG_PRI =
+{
+  { 0.68400,  0.31300},
+  { 0.22100,  0.84800},
+  { 0.08610, -0.10200},
+  { 0.31270,  0.32900}
+};
+
 const float AWG_2_AP0_MAT[3][3] = 
                         calculate_rgb_to_rgb_matrix( ARRI_ALEXA_WG_PRI, 
                                                      AP0, 

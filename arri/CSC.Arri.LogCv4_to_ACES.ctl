@@ -12,8 +12,6 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
-// ARRI LogC4 to ACES
-
 const Chromaticities ARRI_ALEXA_WG4_PRI =
 {
   { 0.7347,  0.2653},

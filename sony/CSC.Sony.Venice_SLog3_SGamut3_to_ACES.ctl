@@ -15,6 +15,17 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+// Note: No official published primaries exist as of this day for the
+// Sony VENICE SGamut3 and Sony VENICE SGamut3.Cine colorspaces. The primaries
+// have thus been derived from the IDT matrices.
+const Chromaticities SONY_VENICE_SGAMUT3_PRI =
+{
+  { 0.740464264304292,  0.279364374750660},
+  { 0.089241145423286,  0.893809528608105},
+  { 0.110488236673827, -0.052579333080476},
+  { 0.312700000000000,  0.329000000000000}
+};
+
 //------------------------------------------------------------
 //  VENICE S-Gamut3 to AP0 matrix coeffs
 //------------------------------------------------------------

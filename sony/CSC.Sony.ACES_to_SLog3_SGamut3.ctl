@@ -15,6 +15,13 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities SONY_SGAMUT3_PRI =
+{
+    { 0.730,  0.280},
+    { 0.140,  0.855},
+    { 0.100, -0.050},
+    { 0.3127,  0.3290}
+};
 
 const float AP0_2_SGAMUT3_MAT[3][3] = 
                         calculate_rgb_to_rgb_matrix( AP0, 

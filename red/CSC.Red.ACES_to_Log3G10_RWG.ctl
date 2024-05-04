@@ -14,6 +14,13 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities RED_WIDEGAMUTRGB_PRI =
+{
+    { 0.780308,  0.304253},
+    { 0.121595,  1.493994},
+    { 0.095612, -0.084589},
+    { 0.3127,  0.3290}
+};
 
 const float AP0_2_RWG_MAT[3][3] = 
                         calculate_rgb_to_rgb_matrix( AP0, 

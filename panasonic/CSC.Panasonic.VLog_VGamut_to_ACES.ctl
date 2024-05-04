@@ -14,6 +14,13 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities PANASONIC_VGAMUT_PRI =
+{
+  { 0.730,  0.280},
+  { 0.165,  0.840},
+  { 0.100, -0.030},
+  { 0.3127,  0.3290}
+};
 
 const float VGAMUT_2_AP0_MAT[3][3] = 
                         calculate_rgb_to_rgb_matrix( PANASONIC_VGAMUT_PRI, 
