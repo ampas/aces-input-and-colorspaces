@@ -1,12 +1,12 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.ACES_to_SLog3_Venice_SGamut3.a2.v1</ACEStransformID>
-// <ACESuserName>ACES2065-1 to Sony S-Log3 VENICE S-Gamut3</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.ACES_to_Venice_SLog3_SGamut3.a2.v1</ACEStransformID>
+// <ACESuserName>ACES2065-1 to Sony VENICE S-Log3 S-Gamut3</ACESuserName>
 
 //
-// ACES Color Space Conversion - ACES to Sony S-Log3 VENICE S-Gamut3
+// ACES Color Space Conversion - ACES to Sony VENICE S-Log3 S-Gamut3
 //
 // converts ACES2065-1 (AP0 w/ linear encoding) to
-//          Sony S-Log3 VENICE S-Gamut3
+//          Sony VENICE S-Log3 S-Gamut3
 //
 
 
