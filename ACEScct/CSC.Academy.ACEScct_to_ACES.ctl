@@ -22,14 +22,32 @@ import "Lib.Academy.ColorSpaces";
 
 
 
+const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
+{
+  { 0.73470,  0.26530},
+  { 0.00000,  1.00000},
+  { 0.00010, -0.07700},
+  { 0.32168,  0.33767}
+};
+
+const Chromaticities AP1 = // Working space primaries for ACES
+{
+  { 0.713,    0.293},
+  { 0.165,    0.830},
+  { 0.128,    0.044},
+  { 0.32168,  0.33767}
+};
+
+const float AP1_to_AP0_MAT[3][3] = calculate_rgb_to_rgb_matrix( AP1, AP0);
+
+
+
 const float X_BRK = 0.0078125;
 const float Y_BRK = 0.155251141552511;
 const float A = 10.5402377416545;
 const float B = 0.0729055341958355;
 
-
-
-float ACEScct_to_lin( input varying float in)
+float ACEScct_to_lin( float in)
 {
     if (in > Y_BRK)
         return pow( 2., in*17.52-9.72);
@@ -56,7 +74,7 @@ void main
     lin_AP1[1] = ACEScct_to_lin( gIn);
     lin_AP1[2] = ACEScct_to_lin( bIn);
 
-    float ACES[3] = mult_f3_f44( lin_AP1, AP1_2_AP0_MAT);
+    float ACES[3] = mult_f3_f33( lin_AP1, AP1_to_AP0_MAT);
   
     rOut = ACES[0];
     gOut = ACES[1];
