@@ -1,5 +1,5 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Academy.ACES_to_VLog_VGamut.a2.v1</ACEStransformID>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Panasonic.ACES_to_VLog_VGamut.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to Panasonic Varicam V-Log V-Gamut</ACESuserName>
 
 //
