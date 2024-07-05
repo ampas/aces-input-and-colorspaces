@@ -12,6 +12,16 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+
+
+const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
+{
+  { 0.73470,  0.26530},
+  { 0.00000,  1.00000},
+  { 0.00010, -0.07700},
+  { 0.32168,  0.33767}
+};
+
 const Chromaticities ARRI_ALEXA_WG4_PRI =
 {
   { 0.7347,  0.2653},

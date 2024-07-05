@@ -5,6 +5,25 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+
+
+
+const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
+{
+  { 0.73470,  0.26530},
+  { 0.00000,  1.00000},
+  { 0.00010, -0.07700},
+  { 0.32168,  0.33767}
+};
+
+const Chromaticities REC2020_PRI = 
+{
+  { 0.70800,  0.29200},
+  { 0.17000,  0.79700},
+  { 0.13100,  0.04600},
+  { 0.31270,  0.32900}
+};
+
 // ITU-R BT.2020 -to- ACES conversion matrix
 const float REC2020_2_ACES_MAT[3][3] = calculate_rgb_to_rgb_matrix(REC2020_PRI, AP0);
 

@@ -15,6 +15,15 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+
+const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
+{
+  { 0.73470,  0.26530},
+  { 0.00000,  1.00000},
+  { 0.00010, -0.07700},
+  { 0.32168,  0.33767}
+};
+
 // Note: No official published primaries exist as of this day for the
 // Sony VENICE SGamut3 and Sony VENICE SGamut3.Cine colorspaces. The primaries
 // have thus been derived from the IDT matrices.
