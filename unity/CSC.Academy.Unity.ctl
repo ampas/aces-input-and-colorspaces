@@ -7,8 +7,7 @@
 // Useful for cases where a CSC may be required but a no-op is desired; e.g. output = input
 //
 
-void main
-(   
+void main(
     input varying float rIn,
     input varying float gIn,
     input varying float bIn,
@@ -16,8 +15,7 @@ void main
     output varying float rOut,
     output varying float gOut,
     output varying float bOut,
-    output varying float aOut
-)
+    output varying float aOut)
 {
     rOut = rIn;
     gOut = gIn;

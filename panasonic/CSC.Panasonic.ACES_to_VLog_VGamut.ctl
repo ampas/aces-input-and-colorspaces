@@ -9,42 +9,34 @@
 //          Panasonic Varicam V-Log V-Gamut
 //
 
-
-
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
-
-
 const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
-{
-  { 0.73470,  0.26530},
-  { 0.00000,  1.00000},
-  { 0.00010, -0.07700},
-  { 0.32168,  0.33767}
-};
+    {
+        {0.73470, 0.26530},
+        {0.00000, 1.00000},
+        {0.00010, -0.07700},
+        {0.32168, 0.33767}};
 
 const Chromaticities PANASONIC_VGAMUT_PRI =
-{
-  { 0.730,  0.280},
-  { 0.165,  0.840},
-  { 0.100, -0.030},
-  { 0.3127,  0.3290}
-};
+    {
+        {0.730, 0.280},
+        {0.165, 0.840},
+        {0.100, -0.030},
+        {0.3127, 0.3290}};
 
-const float AP0_2_VGAMUT_MAT[3][3] = 
-                        calculate_rgb_to_rgb_matrix( AP0, 
-                                                     PANASONIC_VGAMUT_PRI );
-
+const float AP0_2_VGAMUT_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
+                                                                 PANASONIC_VGAMUT_PRI);
 
 const float cut1 = 0.01;
 const float b = 0.00873;
 const float c = 0.241514;
 const float d = 0.598206;
 
-float lin_to_VLog( input varying float in)
+float lin_to_VLog(input varying float in)
 {
-    if ( in < cut1 )
+    if (in < cut1)
     {
         return 5.6 * in + 0.125;
     }
@@ -54,10 +46,7 @@ float lin_to_VLog( input varying float in)
     }
 }
 
-
-
-void main
-(   
+void main(
     input varying float rIn,
     input varying float gIn,
     input varying float bIn,
@@ -65,15 +54,14 @@ void main
     output varying float rOut,
     output varying float gOut,
     output varying float bOut,
-    output varying float aOut
-)
+    output varying float aOut)
 {
-    float ACES[3] = { rIn, gIn, bIn};
+    float ACES[3] = {rIn, gIn, bIn};
 
-    float lin_VGamut[3] = mult_f3_f33( ACES, AP0_2_VGAMUT_MAT);
+    float lin_VGamut[3] = mult_f3_f33(ACES, AP0_2_VGAMUT_MAT);
 
-    rOut = lin_to_VLog( lin_VGamut[0]);
-    gOut = lin_to_VLog( lin_VGamut[1]);
-    bOut = lin_to_VLog( lin_VGamut[2]);
+    rOut = lin_to_VLog(lin_VGamut[0]);
+    gOut = lin_to_VLog(lin_VGamut[1]);
+    bOut = lin_to_VLog(lin_VGamut[2]);
     aOut = aIn;
 }
