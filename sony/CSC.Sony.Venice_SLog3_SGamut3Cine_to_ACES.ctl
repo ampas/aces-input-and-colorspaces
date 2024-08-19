@@ -1,11 +1,11 @@
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.Venice_SLog3_SGamut3Cine_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>Sony Venice S-Log3 S-Gamut3Cine to ACES2065-1</ACESuserName>
+// <ACESuserName>Sony VENICE S-Log3 S-Gamut3Cine to ACES2065-1</ACESuserName>
 
 //
-// ACES Color Space Conversion - Sony Venice S-Log3 S-Gamut3Cine to ACES
+// ACES Color Space Conversion - Sony VENICE S-Log3 S-Gamut3Cine to ACES
 //
-// converts Sony Venice S-Log3 / S-Gamut3Cine to
+// converts Sony VENICE S-Log3 / S-Gamut3Cine to
 //          ACES2065-1 (AP0 w/ linear encoding)
 //
 
@@ -15,39 +15,44 @@
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
 
+const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
+	{
+		{0.73470, 0.26530},
+		{0.00000, 1.00000},
+		{0.00010, -0.07700},
+		{0.32168, 0.33767}};
+
 // Note: No official published primaries exist as of this day for the
 // Sony VENICE SGamut3 and Sony VENICE SGamut3.Cine colorspaces. The primaries
 // have thus been derived from the IDT matrices.
 const Chromaticities SONY_VENICE_SGAMUT3_CINE_PRI =
-{
-  { 0.775901871567345,  0.274502392854799},
-  { 0.188682902773355,  0.828684937020288},
-  { 0.101337382499301, -0.089187517306263},
-  { 0.312700000000000,  0.329000000000000}
-};
+	{
+		{0.775901871567345, 0.274502392854799},
+		{0.188682902773355, 0.828684937020288},
+		{0.101337382499301, -0.089187517306263},
+		{0.312700000000000, 0.329000000000000}};
 
 //------------------------------------------------------------
 //  VENICE S-Gamut3.Cine To AP0 matrix coeffs
 //------------------------------------------------------------
-const float VENICE_SGAMUT3_CINE_2_AP0_MAT[3][3] =
-                        calculate_rgb_to_rgb_matrix( SONY_VENICE_SGAMUT3_CINE_PRI,
-                                                     AP0, 
-                                                     CONE_RESP_MAT_CAT02);
+const float VENICE_SGAMUT3_CINE_2_AP0_MAT[3][3] = calculate_rgb_to_rgb_matrix(SONY_VENICE_SGAMUT3_CINE_PRI,
+																			  AP0,
+																			  CONE_RESP_MAT_CAT02);
 
 //------------------------------------------------------------------------------------
 //  S-Log 3 to linear
 //------------------------------------------------------------------------------------
-float SLog3_to_linear( float SLog )
+float SLog3_to_linear(float SLog)
 {
 	float out;
 
 	if (SLog >= 171.2102946929 / 1023.0)
 	{
-		out = pow(10.0, (SLog*1023.0-420.0)/261.5)*(0.18+0.01)-0.01;
+		out = pow(10.0, (SLog * 1023.0 - 420.0) / 261.5) * (0.18 + 0.01) - 0.01;
 	}
 	else
 	{
-		out = (SLog*1023.0-95.0)*0.01125000/(171.2102946929-95.0);
+		out = (SLog * 1023.0 - 95.0) * 0.01125000 / (171.2102946929 - 95.0);
 	}
 
 	return out;
@@ -56,7 +61,7 @@ float SLog3_to_linear( float SLog )
 //------------------------------------------------------------------------------------
 //  main
 //------------------------------------------------------------------------------------
-void main (
+void main(
 	input varying float rIn,
 	input varying float gIn,
 	input varying float bIn,
@@ -64,7 +69,7 @@ void main (
 	output varying float rOut,
 	output varying float gOut,
 	output varying float bOut,
-	output varying float aOut )
+	output varying float aOut)
 {
 	float SLog3[3];
 	SLog3[0] = rIn;
@@ -72,11 +77,11 @@ void main (
 	SLog3[2] = bIn;
 
 	float linear[3];
-	linear[0] = SLog3_to_linear( SLog3[0] );
-	linear[1] = SLog3_to_linear( SLog3[1] );
-	linear[2] = SLog3_to_linear( SLog3[2] );
+	linear[0] = SLog3_to_linear(SLog3[0]);
+	linear[1] = SLog3_to_linear(SLog3[1]);
+	linear[2] = SLog3_to_linear(SLog3[2]);
 
-	float ACES[3] = mult_f3_f33( linear, VENICE_SGAMUT3_CINE_2_AP0_MAT );
+	float ACES[3] = mult_f3_f33(linear, VENICE_SGAMUT3_CINE_2_AP0_MAT);
 
 	rOut = ACES[0];
 	gOut = ACES[1];

@@ -1,6 +1,6 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Apple.AppleLog_BT2020_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>AppleLog Rec2020 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Apple.ACES_to_AppleLog_BT2020.a2.v1</ACEStransformID>
+// <ACESuserName>ACES2065-1 to AppleLog Rec2020</ACESuserName>
 
 import "Lib.Academy.Utilities";
 import "Lib.Academy.ColorSpaces";
@@ -20,10 +20,10 @@ const Chromaticities REC2020_PRI =
         {0.31270, 0.32900}};
 
 // ITU-R BT.2020 -to- ACES conversion matrix
-const float REC2020_to_ACES_MAT[3][3] = calculate_rgb_to_rgb_matrix(REC2020_PRI,
-                                                                    AP0);
+const float ACES_to_REC2020_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
+                                                                    REC2020_PRI);
 
-float AppleLog_to_linear(float x)
+float linear_to_AppleLog(float R)
 {
     const float R_0 = -0.05641088;
     const float R_t = 0.01;
@@ -31,19 +31,18 @@ float AppleLog_to_linear(float x)
     const float b = 0.00964052;
     const float g = 0.08550479;
     const float d = 0.69336945;
-    const float P_t = c * pow((R_t - R_0), 2.0);
 
-    if (x >= P_t)
+    if (R >= R_t)
     {
-        return pow(2.0, (x - d) / g) - b;
+        return g * log2(R + b) + d;
     }
-    else if (x < P_t && x >= 0.0)
+    else if (R < R_t && R >= R_0)
     {
-        return sqrt(x / c) + R_0;
+        return c * pow(R - R_0, 2.);
     }
     else
     {
-        return R_0;
+        return 0.0;
     }
 }
 
@@ -56,15 +55,17 @@ void main(input varying float rIn,
           output varying float bOut,
           output varying float aOut)
 {
-    float lin_2020[3];
-    lin_2020[0] = AppleLog_to_linear(rIn);
-    lin_2020[1] = AppleLog_to_linear(gIn);
-    lin_2020[2] = AppleLog_to_linear(bIn);
+    float aces[3] = {rIn, gIn, bIn};
 
-    float ACES[3] = mult_f3_f33(lin_2020, REC2020_to_ACES_MAT);
+    float lin_2020[3] = mult_f3_f33(aces, ACES_to_REC2020_MAT);
 
-    rOut = ACES[0];
-    gOut = ACES[1];
-    bOut = ACES[2];
+    float AppleLog[3];
+    AppleLog[0] = linear_to_AppleLog(lin_2020[0]);
+    AppleLog[1] = linear_to_AppleLog(lin_2020[1]);
+    AppleLog[2] = linear_to_AppleLog(lin_2020[2]);
+
+    rOut = AppleLog[0];
+    gOut = AppleLog[1];
+    bOut = AppleLog[2];
     aOut = aIn;
 }

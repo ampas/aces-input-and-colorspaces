@@ -1,12 +1,12 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogCv4_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>ARRI LogCv4 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.ACES_to_LogCv4.a2.v1</ACEStransformID>
+// <ACESuserName>ACES2065-1 to ARRI LogCv4</ACESuserName>
 
 //
-// ACES Color Space Conversion - Arri LogC v4 to ACES2065-1
+// ACES Color Space Conversion - ACES2065-1 to Arri LogC v4
 //
-// converts Arri LogC v4 to
-//          ACES2065-1 (AP0 w/ linear encoding)
+// converts ACES2065-1 (AP0 w/ linear encoding) to
+//          Arri LogC v4 
 //
 
 import "Lib.Academy.Utilities";
@@ -26,14 +26,13 @@ const Chromaticities ARRI_ALEXA_WG4_PRI =
         {0.0991, -0.0308},
         {0.3127, 0.3290}};
 
-const float AP0_to_AWG4_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
-                                                                ARRI_ALEXA_WG4_PRI,
-                                                                CONE_RESP_MAT_CAT02);
+const float AWG_to_AP0_MAT[3][3] = calculate_rgb_to_rgb_matrix(ARRI_ALEXA_WG4_PRI,
+                                                               AP0,
+                                                               CONE_RESP_MAT_CAT02);
 
 // LogC4 Curve Decoding Function
-float normalizedLogC4ToRelativeSceneLinear(float x)
+float RelativeSceneLinearToNormalizedLogC4(float x)
 {
-
     // Constants
     const float a = (pow(2.0, 18.0) - 16.0) / 117.45;
     const float b = (1023.0 - 95.0) / 1023.0;
@@ -41,13 +40,12 @@ float normalizedLogC4ToRelativeSceneLinear(float x)
     const float s = (7.0 * log(2.0) * pow(2.0, 7.0 - 14.0 * c / b)) / (a * b);
     const float t = (pow(2.0, 14.0 * (-c / b) + 6.0) - 64.0) / a;
 
-    if (x < 0.0)
+    if (x < t)
     {
-        return x * s + t;
+        return (x - t) / s;
     }
 
-    float p = 14.0 * (x - c) / b + 6.0;
-    return (pow(2.0, p) - 64.0) / a;
+    return (log2(a * x + 64.0) - 6.0) / 14.0 * b + c;
 }
 
 void main(input varying float rIn,
@@ -59,15 +57,12 @@ void main(input varying float rIn,
           output varying float bOut,
           output varying float aOut)
 {
-    float lin_AWG4[3];
-    lin_AWG4[0] = normalizedLogC4ToRelativeSceneLinear(rIn);
-    lin_AWG4[1] = normalizedLogC4ToRelativeSceneLinear(gIn);
-    lin_AWG4[2] = normalizedLogC4ToRelativeSceneLinear(bIn);
+    float ACES[3] = {rIn, gIn, bIn};
 
-    float ACES[3] = mult_f3_f33(lin_AWG4, AP0_to_AWG4_MAT);
+    float lin_AWG4[3] = mult_f3_f33(ACES, AW0_to_AWG4_MAT);
 
-    rOut = ACES[0];
-    gOut = ACES[1];
-    bOut = ACES[2];
+    rOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[0]);
+    gOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[1]);
+    bOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[2]);
     aOut = aIn;
 }
