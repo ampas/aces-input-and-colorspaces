@@ -1,11 +1,11 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogCv3_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>ARRI LogCv3 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3_to_ACES.a2.v1</ACEStransformID>
+// <ACESuserName>ARRI LogC3 to ACES2065-1</ACESuserName>
 
 //
-// ACES Color Space Conversion - Arri LogC v3 to ACES2065-1
+// ACES Color Space Conversion - Arri LogC3 to ACES2065-1
 //
-// converts Arri LogC v3 to
+// converts Arri LogC3 to
 //          ACES2065-1 (AP0 w/ linear encoding)
 //
 

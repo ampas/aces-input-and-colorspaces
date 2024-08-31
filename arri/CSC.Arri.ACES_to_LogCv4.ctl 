@@ -1,12 +1,12 @@
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.ACES_to_LogCv4.a2.v1</ACEStransformID>
-// <ACESuserName>ACES2065-1 to ARRI LogCv4</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.ACES_to_LogC4.a2.v1</ACEStransformID>
+// <ACESuserName>ACES2065-1 to ARRI LogC4</ACESuserName>
 
 //
-// ACES Color Space Conversion - ACES2065-1 to Arri LogC v4
+// ACES Color Space Conversion - ACES2065-1 to Arri LogC4
 //
 // converts ACES2065-1 (AP0 w/ linear encoding) to
-//          Arri LogC v4 
+//          Arri LogC4 
 //
 
 import "Lib.Academy.Utilities";
