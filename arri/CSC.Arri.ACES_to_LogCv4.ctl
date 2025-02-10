@@ -61,8 +61,8 @@ void main(input varying float rIn,
 
     float lin_AWG4[3] = mult_f3_f33(ACES, AP0_to_AWG4_MAT);
 
-    rOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[0]);
-    gOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[1]);
-    bOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[2]);
+    rOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[0]);
+    gOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[1]);
+    bOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[2]);
     aOut = aIn;
 }
