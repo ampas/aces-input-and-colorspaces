@@ -26,9 +26,9 @@ const Chromaticities ARRI_ALEXA_WG4_PRI =
         {0.0991, -0.0308},
         {0.3127, 0.3290}};
 
-const float AWG_to_AP0_MAT[3][3] = calculate_rgb_to_rgb_matrix(ARRI_ALEXA_WG4_PRI,
-                                                               AP0,
-                                                               CONE_RESP_MAT_CAT02);
+const float AP0_to_AWG4_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
+                                                                ARRI_ALEXA_WG4_PRI,
+                                                                CONE_RESP_MAT_CAT02);
 
 // LogC4 Curve Decoding Function
 float RelativeSceneLinearToNormalizedLogC4(float x)
@@ -59,10 +59,10 @@ void main(input varying float rIn,
 {
     float ACES[3] = {rIn, gIn, bIn};
 
-    float lin_AWG4[3] = mult_f3_f33(ACES, AW0_to_AWG4_MAT);
+    float lin_AWG4[3] = mult_f3_f33(ACES, AP0_to_AWG4_MAT);
 
-    rOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[0]);
-    gOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[1]);
-    bOut = RelativeSceneLinearToNormalizedLogC4(line_AWG4[2]);
+    rOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[0]);
+    gOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[1]);
+    bOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[2]);
     aOut = aIn;
 }
