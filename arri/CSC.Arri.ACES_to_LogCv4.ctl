@@ -30,7 +30,7 @@ const float AP0_to_AWG4_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
                                                                 ARRI_ALEXA_WG4_PRI,
                                                                 CONE_RESP_MAT_CAT02);
 
-// LogC4 Curve Decoding Function
+// LogC4 Curve Encoding Function
 float RelativeSceneLinearToNormalizedLogC4(float x)
 {
     // Constants
