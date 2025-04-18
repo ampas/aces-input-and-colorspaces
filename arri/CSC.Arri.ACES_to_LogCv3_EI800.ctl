@@ -82,10 +82,10 @@ void main(input varying float rIn,
 {
     float ACES[3] = {rIn, gIn, bIn};
 
-    float lin_AWG4[3] = mult_f3_f33(ACES, AP0_to_AWG3_MAT);
+    float lin_AWG3[3] = mult_f3_f33(ACES, AP0_to_AWG3_MAT);
 
-    rOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG4[0]);
-    gOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG4[1]);
-    bOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG4[2]);
+    rOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG3[0]);
+    gOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG3[1]);
+    bOut = relativeExposureToNormalizedLogC3_EI800(lin_AWG3[2]);
     aOut = aIn;
 }
