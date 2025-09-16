@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Apple.ACES_to_AppleLog_BT2020.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to AppleLog Rec2020</ACESuserName>

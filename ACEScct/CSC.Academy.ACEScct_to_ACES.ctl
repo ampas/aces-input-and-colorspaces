@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Academy.ACEScct_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>ACEScct to ACES2065-1</ACESuserName>

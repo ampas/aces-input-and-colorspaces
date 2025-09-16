@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.DJI.ACES_to_DLog_DGamut.a1.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to DJI DLog DGamut</ACESuserName>
