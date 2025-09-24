@@ -73,6 +73,7 @@ float relativeExposureToNormalizedLogC(float re, float EI)
         // Tricky to implement an inverse unless needed. It might be possible to
         // iteratively solve for a numerical inversion, but is currently not
         // supported.
+        return 0;
     } else { // Valid for EI values below 1600
         if (ns > cut)
         {
