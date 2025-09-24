@@ -57,7 +57,7 @@ float normalizedSensorToRelativeExposure(float ns, float EI)
     return (ns - blackSignal) * (0.18 / (midGraySignal * nominalEI / EI));
 }
 
-float normalizedLogCToRelativeExposure(float t, float EI)
+float normalizedLogC3ToRelativeExposure(float t, float EI)
 {
     float nz;
     float out;
@@ -115,9 +115,9 @@ void main(input varying float rIn,
           input uniform float EI = 800.0)
 {
     float lin_AWG3[3];
-    lin_AWG3[0] = normalizedLogCToRelativeExposure(rIn, EI);
-    lin_AWG3[1] = normalizedLogCToRelativeExposure(gIn, EI);
-    lin_AWG3[2] = normalizedLogCToRelativeExposure(bIn, EI);
+    lin_AWG3[0] = normalizedLogC3ToRelativeExposure(rIn, EI);
+    lin_AWG3[1] = normalizedLogC3ToRelativeExposure(gIn, EI);
+    lin_AWG3[2] = normalizedLogC3ToRelativeExposure(bIn, EI);
 
     float ACES[3] = mult_f3_f33(lin_AWG3, AWG3_to_AP0_MAT);
 
