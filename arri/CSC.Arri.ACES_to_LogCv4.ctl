@@ -30,8 +30,8 @@ const float AP0_to_AWG4_MAT[3][3] = calculate_rgb_to_rgb_matrix(AP0,
                                                                 ARRI_ALEXA_WG4_PRI,
                                                                 CONE_RESP_MAT_CAT02);
 
-// LogC4 Curve Decoding Function
-float RelativeSceneLinearToNormalizedLogC4(float x)
+// LogC4 Curve Encoding Function
+float relativeSceneLinearToNormalizedLogC4(float x)
 {
     // Constants
     const float a = (pow(2.0, 18.0) - 16.0) / 117.45;
@@ -61,8 +61,8 @@ void main(input varying float rIn,
 
     float lin_AWG4[3] = mult_f3_f33(ACES, AP0_to_AWG4_MAT);
 
-    rOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[0]);
-    gOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[1]);
-    bOut = RelativeSceneLinearToNormalizedLogC4(lin_AWG4[2]);
+    rOut = relativeSceneLinearToNormalizedLogC4(lin_AWG4[0]);
+    gOut = relativeSceneLinearToNormalizedLogC4(lin_AWG4[1]);
+    bOut = relativeSceneLinearToNormalizedLogC4(lin_AWG4[2]);
     aOut = aIn;
 }
