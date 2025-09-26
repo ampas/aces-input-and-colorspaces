@@ -1,1 +1,0 @@
-The contrib directory contains community-supplied transforms, provided as-is and may not be optimal. The ACES team may have done minimal testing on these transforms, but please visit Feedback on ACESCentral.com to review or leave feedback on these transforms.

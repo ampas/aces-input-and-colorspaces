@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Canon.ACES_to_CLog3_BT2020.a1.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to Canon Log 3 BT.2020</ACESuserName>

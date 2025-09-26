@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Canon.CLog3_CGamut_to_ACES.a1.v1</ACEStransformID>
 // <ACESuserName>Canon Log 3 Cinema Gamut to ACES2065-1</ACESuserName>

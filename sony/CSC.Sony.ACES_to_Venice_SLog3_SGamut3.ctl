@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.ACES_to_Venice_SLog3_SGamut3.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2065-1 to Sony VENICE S-Log3 S-Gamut3</ACESuserName>

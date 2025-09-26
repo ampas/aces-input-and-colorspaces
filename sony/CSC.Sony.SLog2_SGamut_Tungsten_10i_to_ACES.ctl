@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Sony.SLog2_SGamut_Tungsten_10i_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>Sony S-Log2 S-Gamut (tungsten) 10 bits to ACES2065-1</ACESuserName>

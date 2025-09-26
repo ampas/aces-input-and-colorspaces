@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Academy.Unity.a2.v1</ACEStransformID>
 // <ACESuserName>Unity Transform</ACESuserName>

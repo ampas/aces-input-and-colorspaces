@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Red.Log3G10_RWG_to_ACES.a2.v1</ACEStransformID>
 // <ACESuserName>RED Log3G10 REDWideGamutRGB to ACES2065-1</ACESuserName>

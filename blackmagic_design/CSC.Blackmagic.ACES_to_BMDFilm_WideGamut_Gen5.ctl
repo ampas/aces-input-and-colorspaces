@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright Contributors to the ACES Project.
 
 // <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Blackmagic.ACES_to_BMDFilm_WideGamut_Gen5.a2.v1</ACEStransformID>
 // <ACESuserName>ACES2605-1 to Blackmagic Film Wide Gamut (Gen 5)</ACESuserName>
