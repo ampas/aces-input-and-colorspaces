@@ -43,7 +43,7 @@ the top-level ACES repository.
 
 ## Reporting Issues
 
-To report a problem with Output Transfoms, please open an
+To report a problem with Color Space Conversion Transforms, please open an
 [issue](https://github.com/ampas/aces-input-and-colorspaces/issues).
 
 If the issue is senstive in nature or a security related issue, please do not
