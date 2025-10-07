@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright Contributors to the ACES Project.
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>ARRI LogC3 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3-EI800_to_ACES.a2.v1</ACEStransformID>
+// <ACESuserName>ARRI LogC3 EI800 to ACES2065-1</ACESuserName>
 
 //
-// ACES Color Space Conversion - Arri LogC3 to ACES2065-1
+// ACES Color Space Conversion - Arri LogC3 EI800 to ACES2065-1
 //
-// converts Arri LogC3 to
+// converts Arri LogC3 EI800 to
 //          ACES2065-1 (AP0 w/ linear encoding)
-//
-// NOTE: In this transform EI is a parameter, defaulted to EI800.
 //
 
 import "Lib.Academy.Utilities";
