@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright Contributors to the ACES Project.
 
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>ARRI LogC3 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3-EI320_to_ACES.a2.v1</ACEStransformID>
+// <ACESuserName>ARRI LogC3 EI320 to ACES2065-1</ACESuserName>
 
 //
-// ACES Color Space Conversion - Arri LogC3 to ACES2065-1
+// ACES Color Space Conversion - Arri LogC3 EI320 to ACES2065-1
 //
-// converts Arri LogC3 to
+// converts Arri LogC3 EI320 to
 //          ACES2065-1 (AP0 w/ linear encoding)
-//
-// NOTE: In this transform EI is a parameter, defaulted to EI800.
 //
 
 import "Lib.Academy.Utilities";
@@ -116,7 +114,7 @@ void main(input varying float rIn,
           output varying float gOut,
           output varying float bOut,
           output varying float aOut,
-          input uniform float EI = 800.0)
+          input uniform float EI = 320.0)
 {
     float lin_AWG3[3];
     lin_AWG3[0] = normalizedLogC3ToRelativeExposure(rIn, EI);
