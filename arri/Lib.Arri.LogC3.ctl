@@ -1,38 +1,13 @@
-// SPDX-License-Identifier: Apache-2.0
-// Copyright Contributors to the ACES Project.
-
-// <ACEStransformID>urn:ampas:aces:transformId:v2.0:CSC.Arri.LogC3_to_ACES.a2.v1</ACEStransformID>
-// <ACESuserName>ARRI LogC3 to ACES2065-1</ACESuserName>
+// <ACEStransformID>urn:ampas:aces:transformId:v2.0:Lib.Arri.LogC3.a2.v1</ACEStransformID>
+// <ACESuserName>LogC3 Constants and Functions</ACESuserName>
 
 //
-// ACES Color Space Conversion - Arri LogC3 to ACES2065-1
+// LogC3 Constants and Functions
 //
-// converts Arri LogC3 to
-//          ACES2065-1 (AP0 w/ linear encoding)
+// NOTE: Due to the Hermite spline blending region between 0.8 and 1.0, the
+// relativeExposureToNormalizedLogC3() function is only defined for EI values
+// below 1600.
 //
-// NOTE: In this transform EI is a parameter, defaulted to EI800.
-//
-
-import "Lib.Academy.Utilities";
-import "Lib.Academy.ColorSpaces";
-
-const Chromaticities AP0 = // ACES Primaries from SMPTE ST2065-1
-    {
-        {0.73470, 0.26530},
-        {0.00000, 1.00000},
-        {0.00010, -0.07700},
-        {0.32168, 0.33767}};
-
-const Chromaticities ARRI_ALEXA_WG_PRI =
-    {
-        {0.68400, 0.31300},
-        {0.22100, 0.84800},
-        {0.08610, -0.10200},
-        {0.31270, 0.32900}};
-
-const float AWG3_to_AP0_MAT[3][3] = calculate_rgb_to_rgb_matrix(ARRI_ALEXA_WG_PRI,
-                                                                AP0,
-                                                                CONE_RESP_MAT_CAT02);
 
 const float nominalEI = 400.0;
 const float blackSignal = 16.0 / 4095.0;
@@ -108,25 +83,47 @@ float normalizedLogC3ToRelativeExposure(float t, float EI)
     return normalizedSensorToRelativeExposure(ns, EI);
 }
 
-void main(input varying float rIn,
-          input varying float gIn,
-          input varying float bIn,
-          input varying float aIn,
-          output varying float rOut,
-          output varying float gOut,
-          output varying float bOut,
-          output varying float aOut,
-          input uniform float EI = 800.0)
+float relativeExposureToNormalizedSensor(float re, float EI)
 {
-    float lin_AWG3[3];
-    lin_AWG3[0] = normalizedLogC3ToRelativeExposure(rIn, EI);
-    lin_AWG3[1] = normalizedLogC3ToRelativeExposure(gIn, EI);
-    lin_AWG3[2] = normalizedLogC3ToRelativeExposure(bIn, EI);
+    return re * (midGraySignal * nominalEI / EI) / 0.18 + blackSignal;
+}
 
-    float ACES[3] = mult_f3_f33(lin_AWG3, AWG3_to_AP0_MAT);
+float relativeExposureToNormalizedLogC3(float re, float EI)
+{
+    float nz;
+    float out;
+    float ns;
+    const float gain = EI / nominalEI;
+    const float gray = midGraySignal / gain;
+    const float encGain = (log2(gain) * (0.89 - 1.0) / 3.0 + 1.0) * encodingGain;
+    float encOffset = encodingOffset;
+    for (int i = 0; i < 3; i = i + 1)
+    {
+        nz = ((95.0 / 1023.0 - encOffset) / encGain - offset) / slope;
+        encOffset = encodingOffset - log10(1.0 + nz) * encGain;
+    }
+    float xm = log10((1.0 - blackSignal) / gray + nz) * encGain + encOffset;
 
-    rOut = ACES[0];
-    gOut = ACES[1];
-    bOut = ACES[2];
-    aOut = aIn;
+    ns = relativeExposureToNormalizedSensor(re, EI);
+
+    ns = (ns - blackSignal) / gray + nz;
+
+    if (xm > 1) {
+        // Hermite blending region
+        // Tricky to implement an inverse unless needed. It might be possible to
+        // iteratively solve for a numerical inversion, but is currently not
+        // supported.
+        return 0;
+    } else { // Valid for EI values below 1600
+        if (ns > cut)
+        {
+            out = log10(ns);
+        } 
+        else
+        {
+            out = slope * ns + offset;
+        }
+    }
+
+    return out * encGain + encOffset;
 }
